@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Charge</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .mobile {
+            margin: 0 auto;
+            width: 220px;
+            height: 450px;
+            border: 5px solid #222;
+            margin-top: 30px;
+            border-radius: 50px;
+            position: relative;
+            padding: 0 30px 30px 30px;
+            text-align: center;
+            background-color: #c8f0ff;
+        }
+
+        .upperbox {
+            width: 150px;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            background: #222;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .text {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 30px;
+            color: red;
+        }
+
+        .btn {
+            padding: 10px;
+            background-color: greenyellow;
+            border-radius: 5px;
+            font-size: 14px;
+            border: 0;
+            margin: 0 auto;
+            display: block;
+            margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile">
+        <div class="upperbox"></div>
+        <h1 class="text">Your Phone's Battery is Low, Please Charge...</h1>
+        <span id="icon"><i id="font-size" class=""></i></span>
+    </div>
+    <button class="btn" id="chargePhone">Charge Phone</button>
+
+    <script>
+        let icon = document.getElementById('icon');
+
+        const changeBattery = () => {
+            icon.classList = "fa fa-battery-0";
+            icon.style.fontSize = "100px";
+            icon.style.color = "red";
+        }
+
+        let getBtn = document.getElementById('chargePhone');
+
+        const chargeBtn = () => {
+
+            var elems = document.getElementsByClassName('text');
+
+            icon.classList = "fa fa-battery-1";
+            icon.style.color = "#ffd000";
+
+            setTimeout(() => {
+                icon.classList = "fa fa-battery-2";
+                icon.style.color = "#ffd000";
+            }, 1000);
+
+            setTimeout(() => {
+                icon.classList = "fa fa-battery-3";
+                icon.style.color = "#a9ff00";
+            }, 2000);
+
+            setTimeout(() => {
+                icon.classList = "fa fa-battery-4";
+                icon.style.color = "#19e400";
+                for (var i = 0; i < elems.length; i += 1) {
+                    elems[i].innerHTML = 'Battery is Full Now';
+                    elems[i].style.color = "#19e400";
+                }
+               
+            }, 3000);
+
+            getBtn.disabled = "true";
+        }
+
+        getBtn.addEventListener('click', chargeBtn);
+        changeBattery();
+
+    </script>
+</body>
+
+</html>
